@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "update_url":"http://clients2.google.com/service/update2/crx",
+  "minimum_chrome_version": "19",
+  "background": {
+    "scripts": ["/javascript/jquery.js", "/background.js"]
+  }, 
+  "chrome_url_overrides" : {
+    "newtab": "ntp.html"
+  },
+  "version": "2012.107.120.100",
+  "name": "Awesome New Tab Page",
+  "description": "Enhance your New Tab Page with ultimate customizability and power. Awesome, like you. [ANTP]",
+  "options_page": "options.html",
+  "icons": {
+    "128": "icon128.png"
+  },
+  "default_locale": "en",
+  "permissions": [
+    "management",
+    "bookmarks",
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "<all_urls>"
+  ], 
+  "content_security_policy": "script-src 'self' https://apis.google.com https://ssl.google-analytics.com https://platform.twitter.com https://api.flattr.com; object-src 'self'"
+}

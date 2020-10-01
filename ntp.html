@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html ng-app="antp" ng-csp>
+  <head>
+  <!-- Awesome New Tab Page
+     -   antp.co
+     -   Copyright 2011-2012 Michael Hart (h4r7.me)
+     - Want to make it even more awesome?
+     -   github.antp.co
+     -
+     - Licensed under GPL v3:
+     -   http://www.gnu.org/licenses/gpl-3.0.txt
+     -   Further Restrictions:
+     -     To make use of or modify the below code in any way:
+     -     - You agree to leave this copyright and license notice intact without
+     -       modification; and
+     -     - You agree to mark your modified versions as modified from the original
+     -       version; and
+     -     - You agree not to misrepresent the origin of this material or your
+     -       relationship with the authors of this project or the project itself.
+    =-->
+
+    <title>New Tab</title>
+    <link rel="canonical" href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg" />
+    <link rel="publisher" href="https://plus.google.com/101062285048075360930" />
+    <link rel="shortcut icon" href="/images/favicon.png?20120409">
+
+    <link rel="stylesheet" href="/css/core.bookmarkbar.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/colorpicker/css/colorpicker.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/css/jquery.jgrowl.css" type="text/css" media="screen">
+
+    <link rel="stylesheet" href="core.style.css?nocache=10" type="text/css" media="screen">
+
+    <script type="text/javascript" src="/javascript/angular/angular-1.0.1.min.js"></script>
+    <script type="text/javascript" src="/javascript/angular/modules/filters.js"></script>
+    <script type="text/javascript" src="/javascript/angular/modules/directives.js"></script>
+    <script type="text/javascript" src="/javascript/angular/modules/antp.js"></script>
+  </head>
+
+  <body class="bg-color">
+    <!-- Fixes an issue where scrolling sometimes didn't work. -->
+    <div class="scroll-helper"></div>
+
+    <ul id="bookmarksBar" style="display:none;"></ul>
+
+    <div id="grid-holder"></div>
+
+    <div id="widget-holder"></div>
+
+    <div id="top-buttons">
+      <div id="logo-button" class="side-button">&nbsp;</div>
+      <div id="config-button" class="side-button">&nbsp;</div>
+      <div id="app-drawer-button" class="side-button">&nbsp;</div>
+      <div id="widget-drawer-button" class="side-button">&nbsp;</div>
+      <div id="recently-closed-tabs" class="side-button">&nbsp;</div>
+      <div id="lock-button" class="side-button hidden">&nbsp;</div>
+      <div id="unlock-button" class="side-button">&nbsp;</div>
+      <div id="tmp-contest" class="side-button" style="display: none;">&nbsp;</div>
+    </div>
+
+    <div id="recently-closed-tabs-menu"></div>
+
+    <div id="about" class="ui-2 container">
+      <div class="ui-2 header">
+        <div class="ui-2 left">
+          <div class="ui-2 logo"></div>
+          <div class="ui-2 name">
+            Awesome New Tab Page
+            <span class="ui-2 crumb">&nbsp;</span>
+            <span class="ui-2 subname"> {{'ui_about' | i18n}} </span>
+          </div>
+          <div class="ui-2 plus-share">
+            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
+          </div>
+        </div>
+        <div class="ui-2 right">
+          <div class="ui-2 config"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 vr"></div>
+          <div class="ui-2 x"></div>
+        </div>
+      </div>
+
+      <div class="ui-2 contents">
+        <div id="about-contrib" class="ui-2">
+          <h3>{{'ui_about_contrib' | i18n}}</h3>
+          <p>{{'ui_about_contrib_desc' | i18n}}</p>
+          <p class="ilb">
+            <a href="https://github.com/NewTabPage/Awesome-New-Tab-Page/contributors" class="bubble">
+              {{'ui_about_dev' | i18n}}
+            </a>
+          </p>
+          <p class="ilb">
+            <a href="http://crowdin.net/project/antp" class="bubble">
+              {{'ui_about_contrib_translators' | i18n}}
+            </a>
+          </p>
+          <p class="ilb">
+            <a href="https://ntp.uservoice.com/forums/136895-feedback" class="bubble">
+              {{'ui_about_contrib_users' | i18n}}
+            </a>
+          </p>
+          <p>{{'ui_about_contrib_cta' | i18n}}</p>
+        </div>
+
+        <div id="about-dev" class="ui-2">
+          <h3>{{'ui_about_dev' | i18n}}</h3>
+
+          <p class="ilb">
+            <a href="https://github.com/NewTabPage/Awesome-New-Tab-Page/contributors" class="bubble">
+              Fork ANTP
+            </a>
+            <a href="https://github.com/NewTabPage/Awesome-New-Tab-Page/wiki" class="bubble">
+              Visit Wiki
+            </a>
+          </p>
+
+          <p>Did you know that making a widget for Awesome New Tab Page is as easy as making a website?</p>
+          <p>Learn more here:
+            <u><a href="https://github.com/NewTabPage/Awesome-New-Tab-Page/wiki">github.com</a></u>.
+          </p>
+        </div>
+
+        <div id="about-flattr" class="ui-2">
+          <h3>Flattr</h3>
+          <p class="ilb">
+            Support Awesome New Tab Page's development with Flattr.
+          </p>
+          <p class="ilb">
+            <a class="FlattrButton" style="display:none;" href="http://antp.co/"></a>
+          </p>
+        </div>
+
+        <div id="about-share" class="ui-2">
+          <h3>{{'ui_about_share' | i18n}}</h3>
+          <p>{{'ui_about_share1' | i18n}}</p>
+          <g:plusone expandTo="top" size="medium"
+          href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></g:plusone>
+          <a href="https://twitter.com/share" class="twitter-share-button"
+            data-url="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"
+            data-text="Awesome New Tab Page: The Chrome New Tab Page should be awesome, just like you."
+            data-count="horizontal" data-via="NewTabPage" data-related="HartMichael:Developer">Tweet</a>
+          <br />
+          <g:plus href="https://plus.google.com/101062285048075360930" width="300" height="131" theme="light"></g:plus>
+        </div>
+
+        <div id="about-rate" class="ui-2">
+          <h3>{{'ui_about_rate' | i18n}}</h3>
+          <p>
+            {{'ui_about_rate_desc' | i18n}}
+          </p>
+          <p>
+            <a href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg/reviews" class="bubble">
+              <img src="/images/ui-2/stars.png">
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="config" class="ui-2 container">
+      <div class="ui-2 header">
+        <div class="ui-2 left">
+          <div class="ui-2 logo"></div>
+          <div class="ui-2 name">
+            Awesome New Tab Page
+            <span class="ui-2 crumb">&nbsp;</span>
+            <span class="ui-2 subname">{{'ui_config' | i18n}}</span>
+          </div>
+          <div class="ui-2 plus-share">
+            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
+          </div>
+        </div>
+        <div class="ui-2 right">
+          <div class="ui-2 config"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 vr"></div>
+          <div class="ui-2 x"></div>
+        </div>
+      </div>
+
+      <div class="ui-2 contents" id="config-contents">
+        <div id="config-general" class="ui-2">
+          <h3>{{'ui_config_general' | i18n}}</h3>
+          <div id="toggleBmb-holder">
+            <input id="toggleBmb" type="checkbox" name="show" value="true" />
+            <p class="ilb">{{'ui_config_shbmb' | i18n}}</p>
+          </div>
+
+          <div id="hideLeftButtons-holder">
+            <input id="hideLeftButtons" type="checkbox" name="show" value="true" />
+            <p class="ilb">{{'ui_config_shtlb' | i18n}}</p>
+          </div>
+
+          <p class="tip">{{'ui_config_shtlb_desc' | i18n}}</p>
+
+          <div id="toggle-grid-holder">
+            <input id="toggle-grid" type="checkbox" name="show" value="true" />
+            <p class="ilb">{{'ui_config_shgrid' | i18n}}</p>
+          </div>
+
+          <div id="amazon-locale">
+            <select id="amazon-locale-selection">
+              <option value="amazon.com">United States (Amazon.com)</option>
+              <option value="amazon.ca">Canada (Amazon.ca)</option>
+              <option value="amazon.co.uk">United Kingdom (Amazon.co.uk)</option>
+              <option value="amazon.at">Austria (Amazon.at)</option>
+              <option value="amazon.cn">China (Amazon.cn)</option>
+              <option value="amazon.fr">France (Amazon.fr)</option>
+              <option value="amazon.de">Germany (Amazon.de)</option>
+              <option value="amazon.it">Italy (Amazon.it)</option>
+              <option value="amazon.co.jp">Japan (Amazon.co.jp)</option>
+              <option value="amazon.es">Spain (Amazon.es)</option>
+            </select>
+            <p class="ilb">
+              <i18n message-id='ui_config_amazonlocale' />
+              <a href="http://www.amazon.com/gp/feature.html?docId=487250&tag=sntp-20">
+                <u>{{'ui_c_learnmore' | i18n}}</u></a>.
+            </p>
+          </div>
+
+          <div id="reset-button" class="bubble ilb">
+            {{'ui_config_reset' | i18n}}
+          </div>
+          <p class="ilb">{{'ui_config_reset_desc' | i18n}}</p>
+        </div>
+
+        <div id="config-background" class="ui-2">
+          <h3>{{'ui_config_bg' | i18n}}</h3>
+
+          <div class="bubble ilb bg-color">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div id="colorselector-bg" class="bubble ilb">
+            {{'ui_config_bg_changecolor' | i18n}}
+          </div>
+          <input type="file" id="filesystem_bg_input" style="width:0; height: 0; opacity: 0;">
+          <div id="filesystem_bg_ui" class="bubble ilb">
+            {{'ui_config_bg_upload' | i18n}}
+          </div>
+          <p class="tip">
+            <i18n message-id='ui_config_bgimg1' />
+            <a href="http://www.w3schools.com/css/tryit.asp?filename=trycss_background_shorthand2">
+              <u>{{'ui_c_learnmore' | i18n}}</u>.
+            </a>
+          </p>
+          <p>
+            <input id="bg-img-css" type="text" name="bg-img-css" />
+          </p>
+          <p class="tip">{{'ui_config_bgimg3' | i18n}}</p>
+          <p>{{'ui_config_bgimg2' | i18n}}</p>
+          <pre>url(https://cdn.antp.co/misc/bg/ics.png) repeat right top</pre>
+        </div>
+
+        <div id="import-export" class="ui-2">
+					<h3 class="ng-binding"><i18n message-id="ui_import_export_header" /></h3>
+					<div id="import-export-btn" class="bubble ilb"><i18n message-id="ui_import_export_btn" /></div>
+				</div>
+
+				<div id="import-export-contents" class="ui-2">
+					<h3 class="ng-binding"><i18n message-id="ui_import_export_header" /></h3>
+					<div id="import-export-btn2" class="bubble ilb ng-binding">
+            <i18n message-id="ui_import_export_btn2" />
+					</div>
+          <div id="import-export-btn-import" class="bubble ilb ng-binding">
+            <i18n message-id="ui_import_export_btn_import" />
+          </div>
+          <div id="import-export-btn-export" class="bubble ilb ng-binding">
+            <i18n message-id="ui_import_export_btn_export" />
+          </div>
+					<div id="import-export-textarea-div">
+						<textarea rows="10" cols="50" id="import-export-textarea"></textarea>
+					</div>
+          <div id="import-export-btn-import-run-div">
+            <div id="import-export-btn-import-run" class="bubble ilb ng-binding">
+              <i18n message-id="ui_import_export_btn_import_run" />
+            </div>
+          </div>
+				</div>
+      </div>
+    </div>
+
+    <div id="apps" class="ui-2 container">
+      <div class="ui-2 header">
+        <div class="ui-2 left">
+          <div class="ui-2 logo"></div>
+          <div class="ui-2 name">
+            Awesome New Tab Page
+            <span class="ui-2 crumb">&nbsp;</span>
+            <span class="ui-2 subname">
+              {{'ui_button_apps' | i18n}}
+            </span>
+          </div>
+          <div class="ui-2 plus-share">
+            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
+          </div>
+        </div>
+        <div class="ui-2 right">
+          <div class="ui-2 config"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 vr"></div>
+          <div class="ui-2 x"></div>
+        </div>
+      </div>
+
+      <div class="ui-2 contents">
+        <div class="drawer-app ui-2 ilb faw-box">
+          <div class="faw-wrapper faw-icon-information">
+            <div class="faw-head"><i18n message-id="ui_faw_unlock_drag" /></div>
+            <div class="faw-body"><i18n message-id="ui_faw_unlock_drag_apps" /></div>
+          </div>
+        </div>
+        <div class="drawer-app ui-2 ilb faw-box">
+          <div class="faw-wrapper faw-icon-download">
+            <div class="faw-head"><i18n message-id="ui_faw_get_more_apps" /></div>
+            <div class="faw-body"><i18n message-id="ui_faw_get_more_apps_body" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="widgets" class="ui-2 container">
+      <div class="ui-2 header">
+        <div class="ui-2 left">
+          <div class="ui-2 logo"></div>
+          <div class="ui-2 name">
+            Awesome New Tab Page
+            <span class="ui-2 crumb">&nbsp;</span>
+            <span class="ui-2 subname">
+              {{'ui_button_widgets' | i18n}}
+            </span>
+          </div>
+          <div class="ui-2 plus-share">
+            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
+          </div>
+        </div>
+        <div class="ui-2 right">
+          <div class="ui-2 widgets-refresh"></div>
+          <div class="ui-2 config"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 vr"></div>
+          <div class="ui-2 x"></div>
+        </div>
+      </div>
+
+      <div class="ui-2 contents" id="widget-drawer">
+        <div class="drawer-app ui-2 ilb faw-box">
+          <div class="faw-wrapper faw-icon-information">
+            <div class="faw-head"><i18n message-id="ui_faw_unlock_drag" /></div>
+            <div class="faw-body"><i18n message-id="ui_faw_unlock_drag_widgets" /></div>
+          </div>
+        </div>
+        <div class="drawer-app ui-2 ilb faw-box">
+          <div class="faw-wrapper faw-icon-download">
+            <div class="faw-head"><i18n message-id="ui_faw_get_more_widgets" /></div>
+            <div class="faw-body"><i18n message-id="ui_faw_get_more_widgets_body" /></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="editor" class="ui-2 container">
+      <div class="ui-2 header">
+        <div class="ui-2 left">
+          <div class="ui-2 logo"></div>
+          <div class="ui-2 name">
+            Awesome New Tab Page
+            <span class="ui-2 crumb">&nbsp;</span>
+            <span class="ui-2 subname">
+              {{'ui_te' | i18n}}
+            </span>
+            <span class="ui-2 crumb">&nbsp;</span>
+            <span class="ui-2 subname" id="editor-name">
+              &nbsp;
+            </span>
+          </div>
+          <div class="ui-2 plus-share">
+            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
+          </div>
+        </div>
+        <div class="ui-2 right">
+          <div class="ui-2 config"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 vr"></div>
+          <div class="ui-2 x"></div>
+        </div>
+      </div>
+
+      <div class="ui-2 contents">
+        <div id="tile-editor-right">
+            <h3>{{'ui_te_name' | i18n}}</h3>
+            <p>{{'ui_te_name_desc' | i18n}}</p>
+            <input id="shortcut_name" type="text" />
+            <p>
+              <input id="shortcut_name_show" type="checkbox" />
+              {{'ui_te_shname' | i18n}}
+            </p>
+            <p>
+              <input id="shortcut_pin" type="checkbox" />
+              {{'ui_te_pin' | i18n}}
+            </p>
+          <div class="hide-if-app">
+            <h3>URL</h3>
+            <p>{{'ui_te_url_desc' | i18n}}</p>
+            <input id="shortcut_url" type="text" />
+            <p class="tip">{{'ui_te_url_tip' | i18n}}</p>
+            <p>
+              <input id="shortcut_favicon_show" type="checkbox" />
+              {{'ui_te_shfavicon' | i18n}}
+            </p>
+          </div>
+
+          <h3>{{'ui_config_bg_changecolor' | i18n}}</h3>
+          <div id="shortcut_colorpicker" class="bubble ilb">
+            {{'ui_te_bg_colorpicker' | i18n}}
+          </div>
+          <div id="swatches"></div>
+
+          <p>
+            <input id="shortcut_background_transparent" type="checkbox" />
+            {{'ui_te_bg_transparent' | i18n}}
+          </p>
+          <p class="tip">
+            {{'ui_te_bg_tip' | i18n}}
+          </p>
+          <div class="hide-if-app">
+          <p class="tip">
+            {{'ui_te_bg_note' | i18n}}
+          </p>
+          </div>
+
+        </div>
+
+        <div id="tile-editor-left">
+          <div id="fake-tile-wrapper">
+            <div id="fake-tile-background" class="bg-color">
+              <div class="fake-tile" id="preview-tile">
+                <img id="invisible-tile-img" style="display: none;"/> <!-- this element is to just get width and height of tile icon -->
+                <div class="app-name"></div>
+                <img class="app-favicon"></img>
+                <div class="iframe-mask"></div>
+              </div>
+              <div class="fake-tile" id="ft0"></div>
+              <div class="fake-tile" id="ft1"></div>
+              <div class="fake-tile" id="ft2"></div>
+              <div class="fake-tile" id="ft3"></div>
+              <div class="fake-tile" id="ft4"></div>
+              <div class="fake-tile" id="ft5"></div>
+              <div class="fake-tile" id="ft6"></div>
+              <div class="fake-tile" id="ft7"></div>
+              <div class="fake-tile" id="ft8"></div>
+            </div>
+          </div>
+
+          <div class="show-if-app">
+            <p class="tip">{{'ui_te_app_tip' | i18n}}</p>
+          </div>
+          <div class="hide-if-app">
+            <div id="icon-resize-scale-controls">
+              <div>
+                <span class="align-top">{{'ui_resize_zoom' | i18n}}: </span>
+                <input id="zoom-slider" type="range" value="0" min="0" max="300" />
+              </div>
+              <div id="reset-bt" class="bubble ilb">
+                {{'ui_resize_reset' | i18n}}
+              </div>
+              <div id="center-bt" class="bubble ilb">
+                {{'ui_resize_center' | i18n}}
+              </div>
+              <div id="cover-bt" class="bubble ilb">
+                {{'ui_resize_cover' | i18n}}
+              </div>
+              <div id="contain-bt" class="bubble ilb">
+                {{'ui_resize_contain' | i18n}}
+              </div>
+          </div>
+
+            <h3>{{'ui_te_ib' | i18n}}</h3>
+            <p>{{'ui_te_ib_desc' | i18n}}</p>
+            <div id="filesystem_icon_screenshot_bt" class="bubble ilb">
+              {{'ui_te_ib_screenshot' | i18n}}
+            </div>
+            <input id="img_url" type="text" class="ilb" />
+            <input type="file" id="filesystem_icon_input" style="width:0; height: 0; opacity: 0;">
+            <div id="filesystem_icon_ui" class="bubble ilb">
+              {{'ui_te_ib_browse' | i18n}}
+            </div>
+            <p class="tip">{{'ui_te_ib_tip' | i18n}}</p>
+            <p class="tip">{{'ui_te_ib_advanced' | i18n}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contest" class="ui-2 container" style="display: none;">
+      <div class="ui-2 header">
+        <div class="ui-2 left">
+          <div class="ui-2 logo"></div>
+          <div class="ui-2 name">
+            Awesome New Tab Page
+            <span class="ui-2 crumb">&nbsp;</span>
+            <span class="ui-2 subname">Contest</span>
+          </div>
+          <div class="ui-2 plus-share">
+            <div class="g-plus" data-action="share" data-href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg"></div>
+          </div>
+        </div>
+        <div class="ui-2 right">
+          <div class="ui-2 config"></div>
+          <div class="ui-2 help url" data-url="https://ntp.uservoice.com/"></div>
+          <div class="ui-2 vr"></div>
+          <div class="ui-2 x"></div>
+        </div>
+      </div>
+
+      <div class="ui-2 contents" style="overflow: none;">
+      </div>
+    </div>
+
+    <!-- Helps keep Chrome's Developer Tools / Elements tab pretty -->
+    <div id="script_holder">
+      <script type="text/javascript" src="/javascript/jquery.js"></script>
+
+      <script type="text/javascript" src="/javascript/common.js?nocache=10"></script>
+      <script type="text/javascript" src="/javascript/tilesystem.js?nocache=10"></script>
+      <script type="text/javascript" src="/javascript/hscroll.js"></script>
+
+      <script type="text/javascript" src="/javascript/jquery.qtip-1.0.0-rc3.min.js"></script>
+      <script type="text/javascript" src="/javascript/jquery.jgrowl.js" async="async"></script>
+      <script type="text/javascript" src="/javascript/center.js"></script>
+      <script type="text/javascript" src="/colorpicker/js/colorpicker.js"></script>
+
+      <script type="text/javascript" src="/javascript/tile-maintenance.js?nocache=10"></script>
+      <script type="text/javascript" src="/javascript/ui.js?nocache=10" async="async"></script>
+      <script type="text/javascript" src="/javascript/base64.js?nocache=10" async="async"></script>
+
+      <script type="text/javascript" src="/javascript/apps-window.js?nocache=10" async="async"></script>
+      <script type="text/javascript" src="/javascript/widgets-window.js?nocache=10" async="async"></script>
+      <script type="text/javascript" src="/javascript/tile-editor.js?nocache=10" async="async"></script>
+
+      <script type="text/javascript" src="/javascript/bookmarkbar.js"></script>
+      <script type="text/javascript" src="/javascript/color-thief.js" async="async"></script>
+      <script type="text/javascript" src="/javascript/quantize.js" async="async"></script>
+      <script type="text/javascript" src="/javascript/google-analytics.js" async="async"></script>
+
+      <script type="text/javascript" src="/javascript/filesystem.js?nocache=10" async="async"></script>
+    </div>
+  </body>
+</html>

@@ -57,12 +57,12 @@ body {
   padding: 0;
   font-family: "Segoe UI", "Droid Sans", Arial, sans-serif;
   font-size: 14px;
-  /*overflow-y: hidden;*/
+  overflow: hidden;
   user-select: none;
   -webkit-user-select: none;
 }
 .url, #reset-button {
-  cursor: pointer
+  cursor: pointer;
 }
 .tile {
   background-color: rgba(0, 0, 0, .2);
@@ -73,6 +73,7 @@ body {
   height: 200px;
   overflow: hidden;
   display: block;
+  transition: opacity .2s ease-in-out;
   -webkit-transition: opacity .2s ease-in-out;
 }
 .tile-grid {
@@ -86,19 +87,17 @@ body {
   background-color: rgba(0, 255, 0, .4) !important;
 }
 #widget-holder,#grid-holder {
+  left: 0;
+  margin-top: 38px;
   position: absolute;
   top: 0;
-  left: 0;
 }
 #top-buttons {
   position: fixed;
-  top: -2px;
-  left: -2px;
-  text-decoration: none;
-  cursor: pointer;
+  top: 0px;
+  left: 0px;
   z-index: 900;
-  width: 35px;
-  height: 100%;
+  width: 100%;
 }
 #widget-holder > .widget {
   margin: 3px;
@@ -227,9 +226,11 @@ body {
   right: -19px;
 }
 .locked #widget-holder > .widget.app:active {
+  transform: scale(0.95);
   -webkit-transform: scale(0.95);
 }
 .widget.widget-drag {
+  transform: scale(0.95);
   -webkit-transform: scale(0.95);
   opacity: .75;
 }
@@ -357,17 +358,14 @@ body {
   margin-left: 5px;
   width: 32px;
   height: 32px;
+  transition: left .2s ease-in-out, top .2s ease-in-out;
   -webkit-transition: left .2s ease-in-out, top .2s ease-in-out;
   margin-top: 2px;
   margin-bottom: 2px;
-  display: block;
+  display: inline-block;
+  cursor: pointer;
   opacity: .75;
-
   position: relative;
-}
-#logo-button {
-  margin-top: 0px;
-  margin-bottom: 4px;
 }
 .side-button:hover {
   opacity: 1;
@@ -378,6 +376,7 @@ body {
   background-position: -4px -4px;
   background-size: 40px;
   background-repeat: no-repeat;
+  margin: 0 0 4px 0;
 }
 #config-button {
   background-color: transparent;
@@ -747,6 +746,7 @@ body > .widget-drawer-app img {
   font-size: 12px;
   cursor: pointer;
   right: -15px;
+  transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   margin: 0;
 }
@@ -911,25 +911,34 @@ body > .widget-drawer-app img {
     height: 20px;
   }
   .swatch {
+    box-shadow: 0 0px 5px rgba(0, 0, 0, .5);
     -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, .5);
     width: 40px;
     height: 20px;
     margin-right: 2px;
     float: left;
+    transition: all 0.5s;
     -webkit-transition: all 0.5s;
     cursor: pointer;
   }
   .swatch:hover {
+    transition: all 0.1s;
     -webkit-transition: all 0.1s;
+    transform: scale(1.5, 1.5);
     -webkit-transform: scale(1.5, 1.5);
+    box-shadow: 0 1px 10px black;
     -webkit-box-shadow: 0 1px 10px black;
   }
   .swatch:first-child {
+    border-top-left-radius: 4px;
     -webkit-border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
     -webkit-border-bottom-left-radius: 4px;
   }
   .swatch:last-child {
+    border-top-right-radius: 4px;
     -webkit-border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
     -webkit-border-bottom-right-radius: 4px;
   }
 

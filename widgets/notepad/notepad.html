@@ -1,0 +1,22 @@
+<div ng-controller="NotePadController" id="va-note-pad">
+    <h3>Note Pad</h3>
+    <div id="va-title-bar">
+        <input type="text" autofocus ng-keyup="saveTempNoteTitle()" ng-model="noteTitle" id="va-note-title">
+        <button id="va-note-save-button" ng-click="saveNote()">Save</button>
+    </div>
+    <textarea ng-keyup="saveTempNote()" ng-model="noteText" placeholder="Type your text here" id="va-note-text"></textarea>
+    <div id="va-info-box">
+        <div id="va-info-card">
+            <h4 id="va-info-title">{{ info.title }}</h4>
+            <div id="va-info-body">{{ info.body }}</div>
+            <div id="va-info-actions">
+                <div ng-show="info.showActions">
+                    <div ng-repeat="action in info.actions" class="va-inline-block">
+                        <button class="va-info-action" ng-click="action.method()">{{action.title}}</button>
+                    </div>
+                    <button class="va-info-action" ng-click="closeInfoBox()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -29,11 +29,18 @@
     <link rel="stylesheet" href="/css/jquery.jgrowl.css" type="text/css" media="screen">
 
     <link rel="stylesheet" href="core.style.css?nocache=10" type="text/css" media="screen">
+    <link rel="stylesheet" href="/css/master.css">
+
+    <script src="/javascript/all.min.js"></script>
 
     <script type="text/javascript" src="/javascript/angular/angular-1.0.1.min.js"></script>
     <script type="text/javascript" src="/javascript/angular/modules/filters.js"></script>
     <script type="text/javascript" src="/javascript/angular/modules/directives.js"></script>
     <script type="text/javascript" src="/javascript/angular/modules/antp.js"></script>
+
+    <script type="text/javascript" src="/javascript/angular/modules/BehaviorController.js"></script>
+    <script type="text/javascript" src="/javascript/angular/modules/NotePadController.js"></script>
+    <script type="text/javascript" src="/javascript/angular/modules/TodoListController.js"></script>
   </head>
 
   <body class="bg-color">
@@ -46,16 +53,15 @@
 
     <div id="widget-holder"></div>
 
-    <nav id="navbar">
+    <div id="top-buttons">
       <div id="logo-button" class="side-button">&nbsp;</div>
       <div id="config-button" class="side-button">&nbsp;</div>
       <div id="app-drawer-button" class="side-button">&nbsp;</div>
       <div id="widget-drawer-button" class="side-button">&nbsp;</div>
       <div id="recently-closed-tabs" class="side-button">&nbsp;</div>
-      <div id="lock-button" class="side-button hidden">&nbsp;</div>
       <div id="unlock-button" class="side-button">&nbsp;</div>
       <div id="tmp-contest" class="side-button" style="display: none;">&nbsp;</div>
-    </nav>
+    </div>
 
     <div id="recently-closed-tabs-menu"></div>
 
@@ -517,14 +523,33 @@
       </div>
     </div>
 
+    <div id="va-controls-container" ng-controller="BehaviorController">
+      <div id="va-controls">
+        <button class="va-control" ng-click="openNotePad()"><i class="fas fa-edit"></i></button>
+        <button class="va-control" ng-click="openTodoList()"><i class="fas fa-list"></i></button>
+      </div>
+    </div>
+
+    <div id="va-sidepanel">
+      <div id="va-sidepanel-empty"></div>
+      <div id="va-sidepanel-content">
+        <span id="va-sidepanel-closer">&times;</span>
+
+        <ng-include src="'./widgets/notepad/notepad.html'"></ng-include>
+
+        <ng-include src="'./widgets/todo/todo.html'"></ng-include>
+
+      </div>
+    </div>
+    
     <!-- Helps keep Chrome's Developer Tools / Elements tab pretty -->
     <div id="script_holder">
       <script type="text/javascript" src="/javascript/jquery.js"></script>
-
+      
       <script type="text/javascript" src="/javascript/common.js?nocache=10"></script>
       <script type="text/javascript" src="/javascript/tilesystem.js?nocache=10"></script>
       <script type="text/javascript" src="/javascript/hscroll.js"></script>
-
+      
       <script type="text/javascript" src="/javascript/jquery.qtip-1.0.0-rc3.min.js"></script>
       <script type="text/javascript" src="/javascript/jquery.jgrowl.js" async="async"></script>
       <script type="text/javascript" src="/javascript/center.js"></script>
@@ -533,16 +558,16 @@
       <script type="text/javascript" src="/javascript/tile-maintenance.js?nocache=10"></script>
       <script type="text/javascript" src="/javascript/ui.js?nocache=10" async="async"></script>
       <script type="text/javascript" src="/javascript/base64.js?nocache=10" async="async"></script>
-
+      
       <script type="text/javascript" src="/javascript/apps-window.js?nocache=10" async="async"></script>
       <script type="text/javascript" src="/javascript/widgets-window.js?nocache=10" async="async"></script>
       <script type="text/javascript" src="/javascript/tile-editor.js?nocache=10" async="async"></script>
-
+      
       <script type="text/javascript" src="/javascript/bookmarkbar.js"></script>
       <script type="text/javascript" src="/javascript/color-thief.js" async="async"></script>
       <script type="text/javascript" src="/javascript/quantize.js" async="async"></script>
       <script type="text/javascript" src="/javascript/google-analytics.js" async="async"></script>
-
+      
       <script type="text/javascript" src="/javascript/filesystem.js?nocache=10" async="async"></script>
     </div>
   </body>

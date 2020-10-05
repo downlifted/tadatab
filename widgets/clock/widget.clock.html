@@ -1,26 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <!--
-      // Pixel polished jQuery & CSS3 Analogue Clock plugin V2.1
-      // by molokoloco@gmail.com 10/10/2011 -
-      // Infos : http://www.b2bweb.fr/molokoloco/pixels-polished-jquery-css3-analogue-clock/
-      // jsFiddle : http://jsfiddle.net/molokoloco/V2rFN/
-
-      // Used with permission from author (10/11/2011). -MH
-    -->
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <script type='text/javascript' src='/javascript/jquery.js'></script>
-
-    <link href="http://fonts.googleapis.com/css?family=Droid Sans" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="clock.css" type="text/css" media="screen">
-
-    <script type="text/javascript" src="clock.js"></script>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" href="/css/nvk.reset.min.css"> -->
+    <link rel="stylesheet" href="widget.clock.css" type="text/css" media="screen">
   </head>
-
   <body>
+
     <div id="clock">
-      <div class="clockGlass"></div>
     </div>
+    <!-- 
+      TODO:
+      Style the clock, background, text, details
+      re-format the clock to show a 2 digit style
+     -->
+    <script src="./lib/clocker.min.js"></script>
+    <script type="text/javascript" src="widget.clock.js"></script>
   </body>
 </html>

@@ -410,6 +410,7 @@ body {
   background-image: url("/images/ui-2/side-buttons.png");
   background-position: 0 -160px;
   background-repeat: no-repeat;
+  display: inline-block !important;
   border-color: transparent;
 }
 #recently-closed-tabs {

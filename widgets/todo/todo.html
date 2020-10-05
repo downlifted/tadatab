@@ -1,0 +1,24 @@
+<div ng-controller="TodoListController" id="va-todo-list">
+    <h3>TODO List</h3>
+    <form ng-submit="saveTodo()" id="va-todo-header">
+        <input type="text" autofocus ng-model="todoText" id="va-todo-text">
+        <button id="va-todo-save-button" ng-click="saveTodo()">Save</button>
+    </form>
+    <div id="va-todos-container">
+        <ul class="va-todo-list">
+            <li ng-repeat="todo in todos" class="va-todo">
+                <input type="checkbox" ng-model="todo.done" id="va-todo{{todo.id}}"><label class="va-todo-undone" id="va-todo{{todo.id}}-label" ng-click="toggleDone(todo.id)" ng-dblclick="openTodoEditor(todo.id)"
+                    for="todo{{todo.id}}">{{ todo.text }}</label>
+                <span ng-click="removeTodo(todo.id)" class="va-todo-remover">&times;</span>
+            </li>
+        </ul>
+    </div>
+    <div id="va-todo-editor-container">
+        <div id="va-todo-editor">
+            <h3>Edit TODO</h3>
+            <input type="text" ng-model="editTargetTodo" id="va-new-todo-text">
+            <button class="va-todo-editor-closer" ng-click="closeTodoEditor()">Cancel</button>
+            <button class="va-todo-editor-saver" ng-click="editTodo(targetTodoId)">Save</button>
+        </div>
+    </div>
+</div>

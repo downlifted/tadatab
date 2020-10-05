@@ -25,9 +25,9 @@
 
   function handle(delta) {
     if (delta < 0)
-      ScrollSmoothly(8, 8, "right");
+      ScrollSmoothly(80, 80, "right");
     else if (delta > 0)
-      ScrollSmoothly(8, 8, "left");
+      ScrollSmoothly(80, 80, "left");
   }
 
   function wheel(event){

@@ -1,0 +1,257 @@
+#va-controls-container{
+	position: fixed;
+	top: 4px;
+	right: 4px;
+	z-index: 5000;
+}
+
+.va-control:hover{
+	background-color: transparent;
+	opacity: 1;
+}
+
+.va-control{
+	background-color: transparent;
+	font-size: 22px;
+	padding: 4px;
+	display: inline-block;
+	opacity: 0.7;
+}
+
+#va-sidepanel{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(22, 28, 31, .5);
+	z-index: 5000;
+}
+
+#va-sidepanel-empty{
+	width: 60%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 5000;
+}
+
+#va-sidepanel-content{
+	position: absolute;
+	right: -40%;
+	width: 40%;
+	bottom: 0;
+	top: 0;
+	background-color: #E0E0E0;
+	transition-timing-function: linear;
+	transition-property: right;
+	transform-origin: left;
+	transition-duration: .3s;
+	transition-delay: .1s;
+	z-index: 6000;
+}
+
+#va-sidepanel-closer{
+	font-size: 32px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+button{
+	background-color: #1E88E5;
+	color: #ffffff;
+	font-size: 18px;
+	padding: 8px auto;
+	border: 0;
+}
+
+button:hover {
+	background-color: #1976D2;
+}
+
+#va-note-pad, #va-todo-list{
+	display: none;
+	width: 90%;
+	max-width: 600px;
+	margin: 16px auto;
+}
+
+#va-title-bar, #va-todo-header{
+	display: flex;
+	margin-bottom: 7px;
+}
+
+#va-note-title, #va-todo-text{
+	width: 85%;
+	display: inline-block;
+	padding: 8px;
+	font-size: 18px;
+	border: 0;
+	color: #848484;
+}
+
+#va-note-title:focus, #va-todo-text{
+	color: #000;
+}
+
+#va-note-save-button{
+	width: 15%;
+}
+
+#va-note-text{
+	width: 100%;
+	display: block;
+	padding: 4px;
+	font-size: 16px;
+	border: 0;
+	height: 70vh;
+	overflow: auto;
+	color: #848484;
+	resize: none;
+}
+
+#va-note-text:focus{
+	color: #000;
+}
+
+#va-info-box{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	bottom: 0;
+	background-color: rgba(22, 28, 31, .5);
+	z-index: 5000;
+}
+
+#va-info-card{
+	width: 50%;
+	background-color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 6000;
+}
+
+#va-info-title{
+	border-bottom: 1px solid #E0E0E0;
+	padding: 16px;
+	text-align: center;
+}
+
+#va-info-body{
+	border-bottom: 1px solid #E0E0E0;
+	padding: 32px 16px;
+	text-align: justify;
+}
+
+#va-info-actions{
+	padding: 16px;
+	text-align: right;
+}
+
+.va-inline-block{
+	display: inline-block;
+}
+
+.va-info-action{
+	padding: 8px 16px;
+}
+
+#va-todo-save-button{
+	width: 15%;
+	padding: 8px auto;
+}
+
+#va-todos-container{
+	padding: 16px 0;
+	background-color: #f8f8f8;
+	color: #000;
+}
+
+.va-todo{
+	position: relative;
+	font-size: 20px;
+	padding: 0 16px;
+	display: block;
+	margin-bottom: 2px;
+}
+
+.va-todo > input{
+	vertical-align: middle;
+}
+
+.va-todo-done{
+	text-decoration: line-through;
+	color: #848484;
+}
+
+.va-todo-done{
+	text-decoration: line-through;
+}
+
+.va-todo-remover{
+	position: absolute;
+	right: 16px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+#va-todo-editor-container {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(22, 28, 31, .5);
+	z-index: 5000;
+}
+
+#va-todo-editor {
+	text-align: right;
+	width: 50%;
+	background-color: #fff;
+	padding: 32px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 6000;
+}
+
+#va-todo-editor h3{
+	text-align: center;
+	margin-bottom: 24px;
+}
+
+#va-todo-editor > input{
+	display: block;
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #e0e0e0;
+	font-size: 18px;
+	margin-bottom: 16px;
+}
+
+#va-todo-editor > button{
+	padding: 10px 16px;
+}
+
+.va-todo-editor-closer:hover{
+	background-color: #424242;
+}
+
+.va-todo-editor-closer{
+	background-color: #616161;
+}
+
+.hidden{
+	display: none !important;
+}

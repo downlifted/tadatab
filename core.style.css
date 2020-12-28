@@ -93,6 +93,8 @@ body {
   top: 0;
 }
 #top-buttons {
+  padding: 4px;
+  background-color: #888;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -979,4 +981,198 @@ body > .widget-drawer-app img {
   .align-top {
     vertical-align: top;
     margin-top: 4px;
+  }
+
+
+  /* New Styles */
+
+  #modal-container, #todo-editor-container {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    background: rgba(97, 97, 97, .65);
+    z-index: 100000;
+  }
+
+  #modal-container {
+    display: none;
+    grid-template-columns: 4fr 3fr;
+    grid-template-rows: 100vh;
+  }
+
+  #todo-editor {
+    text-align: right;
+    background-color: #f0f0f0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px;
+    min-width: 40%;
+  }
+
+  #notepad-modal, #todo-modal {
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    padding: 16px;
+    width: 100%;
+    height: 100vh;
+  }
+
+  #todo-editor-container {
+    display: none;
+  }
+
+  #todo-editor h3 {
+    font-size: x-large;
+  }
+
+  #todo-editor input {
+    font-size: large;
+    padding: 8px;
+    width: 50vw;
+    border: 1px solid #9E9E9E;
+    outline: none;
+  }
+
+  #title-bar {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 0;
+  }
+
+  #title-bar input, #todo-header input {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 0;
+    outline: none;
+    border: 1px solid #9E9E9E;
+  }
+
+  #title-bar button, #todo-header button {
+    background-color: #9E9E9E;
+    border: 1px solid #9E9E9E;
+    outline: none;
+    color: #fff;
+  }
+
+  #notepad-modal textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 70vh;
+    border-radius: 0;
+    border: 1px solid #9E9E9E;
+    outline: none;
+    margin: 8px 0;
+    padding: 8px;
+  }
+
+  #todo-header {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 0;
+  }
+
+  .info-action {
+    width: 25%;
+    padding: 8px 16px;
+    background-color: #9E9E9E;
+    border: 1px solid #9E9E9E;
+    border-radius: 0;
+    outline: none;
+    color: #fff;
+  }
+
+  #todo-editor button {
+    width: 25%;
+    padding: 8px 16px;
+    margin-top: 16px;
+    border: 1px solid #9E9E9E;
+    border-radius: 0;
+    outline: none;
+  }
+
+  .todo-editor-closer {
+    background-color: #fff;
+    color: #9e9e9e;
+    font-weight: bold;
+  }
+
+  .todo-editor-saver {
+    background-color: #9E9E9E;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .todo-done{
+    text-decoration: line-through;
+    color: #848484;
+  }
+  
+  .todo-remover{
+    position: absolute;
+    right: 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  #sidepanel-closer{
+    font-size: 32px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  #note-text{
+    width: 100%;
+    display: block;
+    padding: 4px;
+    font-size: 16px;
+    border: 0;
+    height: 70vh;
+    overflow: auto;
+    color: #848484;
+    resize: none;
+  }
+
+  #todos-container{
+    padding: 16px 0;
+    background-color: #f8f8f8;
+    color: #000;
+  }
+
+  .todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .todo{
+    position: relative;
+    font-size: 20px;
+    padding: 0;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .todo > input{
+    vertical-align: middle;
+  }
+
+  .todo-editor-closer:hover{
+    background-color: #424242;
+  }
+
+  .todo-editor-closer{
+    background-color: #616161;
+  }
+
+  #modal-wrapper {
+    transition-duration: .3s;
+  }
+
+  #modal-closer {
   }

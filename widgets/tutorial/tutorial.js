@@ -24,15 +24,18 @@ $("#next,#back").live("click", function(){
 
 
 $(window).load(function() {
-  loadPlusOneScript();
+  // loadPlusOneScript();
   loadTwitterScript();
-  loadFlattrScript();
+  // loadFlattrScript();
 });
 
 function loadPlusOneScript() {
   var po = document.createElement('script');
   po.type = 'text/javascript';
   po.async = true;
+  /** @FIXME
+   * this resource is no longer available
+   */
   po.src = 'https://apis.google.com/js/plusone.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 }
@@ -51,6 +54,9 @@ function loadFlattrScript() {
   t = document.getElementsByTagName('script')[0];
   s.type = 'text/javascript';
   s.async = true;
+  /** @FIXME
+   * this loader is no longer available
+   */
   s.src = 'https://api.flattr.com/js/0.6/load.js?mode=auto&popout=0&https=1';
   t.parentNode.insertBefore(s, t);
 }

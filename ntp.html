@@ -22,7 +22,7 @@
     <title>New Tab</title>
     <link rel="canonical" href="https://chrome.google.com/webstore/detail/mgmiemnjjchgkmgbeljfocdjjnpjnmcg" />
     <link rel="publisher" href="https://plus.google.com/101062285048075360930" />
-    <link rel="shortcut icon" href="/images/favicon.png20120409">
+    <link rel="shortcut icon" href="/images/favicon.png?20120409">
 
     <link rel="stylesheet" href="/css/core.bookmarkbar.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/colorpicker/css/colorpicker.css" type="text/css" media="screen">
@@ -30,10 +30,12 @@
 
     <link rel="stylesheet" href="core.style.css?nocache=10" type="text/css" media="screen">
 
-    <script type="text/javascript" src="/javascript/angular/angular-1.0.1.min.js"></script>
+    <script type="text/javascript" src="/javascript/angular/angular.min.js"></script>
     <script type="text/javascript" src="/javascript/angular/modules/filters.js"></script>
     <script type="text/javascript" src="/javascript/angular/modules/directives.js"></script>
     <script type="text/javascript" src="/javascript/angular/modules/antp.js"></script>
+    <script type="text/javascript" src="/javascript/angular/controllers/todo.js"></script>
+    <script type="text/javascript" src="/javascript/angular/controllers/notepad.js"></script>
   </head>
 
   <body class="bg-color">
@@ -517,6 +519,48 @@
       </div>
     </div>
 
+    <div id="modal-container">
+
+      <div id="modal-closer"></div>
+
+      <div id="modal-wrapper">
+      
+        <div id="notepad-modal" ng-controller="NotepadController">
+            <h3>Tada Pad</h3>
+            <div id="title-bar">
+                <input type="text" autofocus ng-keyup="saveTempNoteTitle()" ng-model="noteTitle" id="note-title">
+                <button id="note-save-button" ng-click="saveNote()">Save</button>
+            </div>
+            <textarea ng-keyup="saveTempNote()" ng-model="noteText" placeholder="Type your text here" id="note-text"></textarea>
+        </div>
+
+        <div id="todo-modal" ng-controller="TodoController">
+          <h3>Tada List</h3>
+          <form ng-submit="saveTodo()" id="todo-header">
+              <input type="text" autofocus ng-model="todoText" id="todo-text">
+              <button id="todo-save-button" ng-click="saveTodo()">Save</button>
+          </form>
+          <div id="todos-container">
+              <ul class="todo-list">
+                  <li ng-repeat="todo in todos" class="todo">
+                      <input type="checkbox" ng-model="todo.done" id="todo{{todo.id}}"><label class="todo-{{todo.done ? '' : 'un'}}done" ng-dblclick="openTodoEditor(todo.id)"
+                          for="todo{{todo.id}}">{{ todo.text }}</label>
+                      <span ng-click="removeTodo(todo.id)" class="todo-remover">&times;</span>
+                  </li>
+              </ul>
+          </div>
+          <div id="todo-editor-container">
+              <div id="todo-editor">
+                  <h3>Edit TODO</h3>
+                  <input type="text" ng-model="editTargetTodo" id="new-todo-text">
+                  <button class="todo-editor-closer" ng-click="closeTodoEditor()">Cancel</button>
+                  <button class="todo-editor-saver" ng-click="editTodo(targetTodoId)">Save</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Helps keep Chrome's Developer Tools / Elements tab pretty -->
     <div id="script_holder">
       <script type="text/javascript" src="/javascript/jquery.js"></script>
@@ -544,6 +588,8 @@
       <script type="text/javascript" src="/javascript/google-analytics.js" async="async"></script>
 
       <script type="text/javascript" src="/javascript/filesystem.js?nocache=10" async="async"></script>
+
+      <script type="text/javascript" src="/javascript/bahavior.js"></script>
     </div>
   </body>
 </html>

@@ -765,7 +765,7 @@ function setStuff() {
         $("body").addClass("unlocked").removeClass("locked");
         localStorage.setItem("lock", false );
         $(".iframe-mask").removeClass("hidden");
-        $("#lock-button").css("display", "block");
+        $("#lock-button").css("display", "inline-block");
         $("#unlock-button").css("display", "none");
         $(".tile").addClass("tile-grid");
 
@@ -788,7 +788,7 @@ function setStuff() {
         $("body").addClass("locked").removeClass("unlocked");
         localStorage.setItem("lock", true );
         $(".iframe-mask").addClass("hidden");
-        $("#unlock-button").css("display", "block");
+        $("#unlock-button").css("display", "inline-block");
         $("#lock-button").css("display", "none");
         $(".tile").removeClass("tile-grid");
 
